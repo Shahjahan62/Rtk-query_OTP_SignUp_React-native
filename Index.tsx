@@ -7,12 +7,16 @@ import App from "./App";
 import Signin from "./src/Signin";
 import Signup from "./src/Signup";
 import Otp from "./src/Otp";
+import MediaFile from "./src/MediaFile";
+
 const Index = () => {
   const Stack = createNativeStackNavigator();
 
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="MediaFile" component={MediaFile} />
+
         <Stack.Screen name="Signin" component={Signin} />
         <Stack.Screen name="Signup" component={Signup} />
         <Stack.Screen name="Otp" component={Otp} />

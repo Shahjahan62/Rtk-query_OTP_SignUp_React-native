@@ -11,7 +11,7 @@ export const Api = createApi({
   //   baseUrl: "https://official-joke-api.appspot.com/jokes/",
   // }),
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://authentic-portfolio.herokuapp.com/user",
+    baseUrl: "https://authentic-portfolio.herokuapp.com/media",
   }),
   // baseQuery: fetchBaseQuery({
   //   baseUrl: "https://blockchain.info/",
@@ -66,6 +66,19 @@ export const Api = createApi({
         }
       ),
     }),
+    mediaGet: builder.mutation({
+      query: (id: any, data: any, { formData }) => (
+        console.log("media", data),
+        {
+          url: `/add`,
+          method: "POST",
+          body: formData,
+        }
+      ),
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    }),
 
     getDataTicker: builder.mutation({
       query: (payload) => ({
@@ -97,4 +110,5 @@ export const {
   useGetDataTickerMutation,
   useEditDataMutation,
   useOtpGetMutation,
+  useMediaGetMutation,
 } = Api;
