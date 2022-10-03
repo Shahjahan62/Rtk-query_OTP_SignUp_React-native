@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { decrement, increment } from "./counter/Slice";
+import { decrement, increment } from "./slice/Slice";
 import { Text, View, Button, Image } from "react-native";
 import {
   useGetPhotoByIdQuery,

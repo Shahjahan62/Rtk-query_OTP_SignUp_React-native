@@ -3,23 +3,31 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 // Define a service using a base URL and expected endpoints
 export const Api = createApi({
   reducerPath: "Api",
-  // baseQuery: fetchBaseQuery({ baseUrl: "https://pokeapi.co/api/v2/" }),
+  baseQuery: fetchBaseQuery({ baseUrl: "https://pokeapi.co/api/v2/" }),
+  // global configuration for the api
+  keepUnusedDataFor: 30,
+  // global configuration for the api
+  refetchOnMountOrArgChange: 30,
+  // global configuration for the api
+  refetchOnFocus: true,
+  // global configuration for the api
+  refetchOnReconnect: true,
   // baseQuery: fetchBaseQuery({
   //   baseUrl: "https://jsonplaceholder.typicode.com",
   // }),
   // baseQuery: fetchBaseQuery({
   //   baseUrl: "https://official-joke-api.appspot.com/jokes/",
   // }),
-  baseQuery: fetchBaseQuery({
-    baseUrl: "https://authentic-portfolio.herokuapp.com/media",
-  }),
+  // baseQuery: fetchBaseQuery({
+  //   baseUrl: "https://authentic-portfolio.herokuapp.com/user",
+  // }),
   // baseQuery: fetchBaseQuery({
   //   baseUrl: "https://blockchain.info/",
   // }),
 
   endpoints: (builder) => ({
     getPokemonByName: builder.query({
-      query: (name) => `photos/${name}`,
+      query: (name) => `pokemon/${name}`,
     }),
     getPhotos: builder.query({
       query: () => "photos",
@@ -63,6 +71,16 @@ export const Api = createApi({
         {
           url: `/send/otp/${id}`,
           method: "GET",
+        }
+      ),
+    }),
+    getUser: builder.mutation({
+      query: (id) => (
+        console.log("id", id),
+        {
+          url: `/get/${id}`,
+          method: "GET",
+          keepUnusedDataFor: 5,
         }
       ),
     }),
@@ -111,4 +129,5 @@ export const {
   useEditDataMutation,
   useOtpGetMutation,
   useMediaGetMutation,
+  useGetUserMutation,
 } = Api;

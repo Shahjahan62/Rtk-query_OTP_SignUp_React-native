@@ -8,6 +8,7 @@ import Signin from "./src/Signin";
 import Signup from "./src/Signup";
 import Otp from "./src/Otp";
 import MediaFile from "./src/MediaFile";
+import CacheBehavior from "./src/CacheBehavior";
 
 const Index = () => {
   const Stack = createNativeStackNavigator();
@@ -15,6 +16,7 @@ const Index = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="CacheBehavior" component={CacheBehavior} />
         <Stack.Screen name="MediaFile" component={MediaFile} />
 
         <Stack.Screen name="Signin" component={Signin} />
