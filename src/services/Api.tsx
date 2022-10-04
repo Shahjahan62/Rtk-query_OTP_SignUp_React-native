@@ -75,7 +75,7 @@ export const Api = createApi({
       ),
     }),
     getUser: builder.mutation({
-      query: (id) => (
+      query: (id: any) => (
         console.log("id", id),
         {
           url: `/get/${id}`,
