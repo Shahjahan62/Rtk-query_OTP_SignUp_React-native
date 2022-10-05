@@ -3,7 +3,9 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 // Define a service using a base URL and expected endpoints
 export const Api = createApi({
   reducerPath: "Api",
-  baseQuery: fetchBaseQuery({ baseUrl: "https://pokeapi.co/api/v2/" }),
+  // baseQuery: fetchBaseQuery({ baseUrl: "https://pokeapi.co/api/v2/" }),
+  baseQuery: fetchBaseQuery({ baseUrl: "http://192.168.200.23:8000/User" }),
+
   // global configuration for the api
   keepUnusedDataFor: 30,
   // global configuration for the api
@@ -24,10 +26,20 @@ export const Api = createApi({
   // baseQuery: fetchBaseQuery({
   //   baseUrl: "https://blockchain.info/",
   // }),
-
+  tagTypes: ["All"],
   endpoints: (builder) => ({
     getPokemonByName: builder.query({
-      query: (name) => `pokemon/${name}`,
+      query: () => `all`,
+      providesTags: ["All"],
+    }),
+
+    Getall: builder.mutation({
+      query: () => ({
+        method: "GET",
+
+        url: "/all",
+      }),
+      invalidatesTags: ["All"],
     }),
     getPhotos: builder.query({
       query: () => "photos",
@@ -130,4 +142,5 @@ export const {
   useOtpGetMutation,
   useMediaGetMutation,
   useGetUserMutation,
+  useGetallMutation,
 } = Api;
